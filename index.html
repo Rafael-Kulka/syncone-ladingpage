@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>SyncOne — Integração de Marketplaces com SAP Business One</title>
+    <meta name="description" content="Integre Mercado Livre, Shopee, Amazon, Magalu e outros marketplaces ao SAP Business One com rapidez, confiabilidade e escalabilidade." />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Custom Tailwind config (opcional)
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#015CFF',
+              secondary: '#6F2DFF'
+            },
+            boxShadow: {
+              soft: '0 10px 30px rgba(2, 6, 23, 0.08)'
+            },
+            backgroundImage: {
+              'hero-glow': 'radial-gradient(60% 60% at 50% 10%, rgba(111,45,255,0.18) 0%, rgba(1,92,255,0.12) 30%, rgba(255,255,255,0) 70%)'
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Fonte (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; }
+    </style>
+  </head>
+  <body class="bg-[#0b1020] text-white antialiased selection:bg-secondary/30 selection:text-white">
+    <!-- Top Gradient / Glow -->
+    <div class="pointer-events-none fixed inset-0 -z-10 bg-hero-glow"></div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="#" class="flex items-center gap-2">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-secondary font-extrabold">S</span>
+            <span class="text-lg font-semibold tracking-tight">SyncOne</span>
+          </a>
+          <nav class="hidden items-center gap-8 text-sm/6 md:flex">
+            <a href="#beneficios" class="text-white/80 hover:text-white">Benefícios</a>
+            <a href="#como-funciona" class="text-white/80 hover:text-white">Como funciona</a>
+            <a href="#features" class="text-white/80 hover:text-white">Recursos</a>
+            <a href="#precos" class="text-white/80 hover:text-white">Preços</a>
+            <a href="#contato" class="text-white/80 hover:text-white">Contato</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <a href="#contato" class="hidden rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/5 md:inline-block">Falar com especialista</a>
+            <a href="#demo" class="rounded-xl bg-gradient-to-tr from-primary to-secondary px-4 py-2 text-sm font-semibold shadow-soft hover:opacity-95">Quero uma demonstração</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero" class="relative overflow-hidden">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:py-28 lg:px-8">
+        <div>
+          <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Integração completa entre Marketplaces e <span class="bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent">SAP Business One</span>
+          </h1>
+          <p class="mt-5 max-w-xl text-base text-white/80 sm:text-lg">
+            Centralize pedidos, produtos, estoque e preços em um único painel inteligente.
+            Configure mapeamentos e regras de negócio sem precisar mexer em código.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#demo" class="rounded-xl bg-gradient-to-tr from-primary to-secondary px-6 py-3 text-sm font-semibold shadow-soft hover:opacity-95">Ver demonstração</a>
+            <a href="#como-funciona" class="rounded-xl border border-white/15 px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5">Como funciona</a>
+          </div>
+          <p class="mt-5 text-xs text-white/50">Compatível com Mercado Livre, Shopee, Amazon, Magalu e outros.</p>
+        </div>
+        <div class="relative">
+          <!-- Mockup / Illustration -->
+          <div class="absolute -left-20 -top-10 -z-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl sm:-left-10"></div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-2 shadow-soft">
+            <div class="rounded-xl bg-[#0f1428] p-4">
+              <div class="mb-3 flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-[#ff5f56]"></span>
+                <span class="h-3 w-3 rounded-full bg-[#ffbd2e]"></span>
+                <span class="h-3 w-3 rounded-full bg-[#27c93f]"></span>
+              </div>
+              <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+                <!-- Stat card -->
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs text-white/70">Pedidos (24h)</p>
+                  <p class="mt-2 text-2xl font-bold">1.482</p>
+                  <span class="mt-1 inline-block text-xs text-emerald-400">+8,4%</span>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs text-white/70">SKUs sincronizados</p>
+                  <p class="mt-2 text-2xl font-bold">32.140</p>
+                  <span class="mt-1 inline-block text-xs text-emerald-400">Tempo real</span>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs text-white/70">Canais ativos</p>
+                  <p class="mt-2 text-2xl font-bold">8</p>
+                  <span class="mt-1 inline-block text-xs text-blue-300">Meli, Shopee…</span>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs text-white/70">Erros tratados</p>
+                  <p class="mt-2 text-2xl font-bold">99,4%</p>
+                  <span class="mt-1 inline-block text-xs text-emerald-400">Com reprocesso</span>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs text-white/70">SLAs atendidos</p>
+                  <p class="mt-2 text-2xl font-bold">97%</p>
+                  <span class="mt-1 inline-block text-xs text-emerald-400">Garantidos</span>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-xs text-white/70">Latência média</p>
+                  <p class="mt-2 text-2xl font-bold">< 2s</p>
+                  <span class="mt-1 inline-block text-xs text-blue-300">Filas & logs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social proof / Logos (placeholders) -->
+    <section aria-label="Empresas atendidas" class="border-y border-white/10 bg-white/5">
+      <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-8 px-4 py-8 sm:px-6 lg:px-8">
+        <span class="text-white/60">Confiado por times que vendem em múltiplos canais</span>
+        <div class="flex flex-wrap items-center gap-8 opacity-70">
+          <div class="h-6 w-24 rounded bg-white/10"></div>
+          <div class="h-6 w-24 rounded bg-white/10"></div>
+          <div class="h-6 w-24 rounded bg-white/10"></div>
+          <div class="h-6 w-24 rounded bg-white/10"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl">Benefícios que geram resultado</h2>
+        <p class="mt-3 text-white/80">Integração profunda ao SAP B1, escalabilidade por canal e configuração sem código.</p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Card -->
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🔗</div>
+          <h3 class="text-lg font-semibold">Integração nativa com SAP Business One</h3>
+          <p class="mt-2 text-white/70">Adapters padronizados, logs completos e compatibilidade com múltiplas filiais e depósitos.</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">⚙️</div>
+          <h3 class="text-lg font-semibold">Configuração sem código</h3>
+          <p class="mt-2 text-white/70">Mapeie campos, crie validações e transforme dados por canal sem precisar alterar código.</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">⏱️</div>
+          <h3 class="text-lg font-semibold">Sincronização em tempo real</h3>
+          <p class="mt-2 text-white/70">Estoque, preços e status de pedidos sempre atualizados para evitar rupturas e divergências.</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">📦</div>
+          <h3 class="text-lg font-semibold">Gestão de pedidos ponta a ponta</h3>
+          <p class="mt-2 text-white/70">Importação, faturamento, NF, picking e envio com rastreio — tudo automatizado.</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🚀</div>
+          <h3 class="text-lg font-semibold">Escalável por canal e cliente</h3>
+          <p class="mt-2 text-white/70">Adicione novos marketplaces e clientes sem reescrever integrações.</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🛡️</div>
+          <h3 class="text-lg font-semibold">Resiliência com filas e reprocessos</h3>
+          <p class="mt-2 text-white/70">Tolerância a falhas, reprocessamento automático e observabilidade de ponta.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section id="como-funciona" class="border-y border-white/10 bg-white/5">
+      <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold sm:text-4xl">Como funciona</h2>
+          <p class="mt-3 text-white/80">Três passos simples para começar a rodar integrado.</p>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/20">1️⃣</div>
+            <h3 class="text-lg font-semibold">Conecte seus marketplaces</h3>
+            <p class="mt-2 text-white/70">Mercado Livre, Shopee, Amazon, Magalu e outros via conexão segura.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/20">2️⃣</div>
+            <h3 class="text-lg font-semibold">Configure mapeamentos e regras</h3>
+            <p class="mt-2 text-white/70">Campos, transformações e validações por canal e por cliente.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/20">3️⃣</div>
+            <h3 class="text-lg font-semibold">Sincronize com o SAP B1</h3>
+            <p class="mt-2 text-white/70">Pedidos, estoque, produtos e preços fluem automaticamente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features detalhadas -->
+    <section id="features" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl">Recursos da plataforma</h2>
+        <p class="mt-3 text-white/80">Tudo o que você precisa para operar sem atrito entre canais e ERP.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        <!-- Coluna 1 -->
+        <div class="space-y-6">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="font-semibold">Produtos</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li>Importação e exportação automática</li>
+              <li>Mapeamento por canal</li>
+              <li>Sincronização de preços e imagens</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="font-semibold">Estoques</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li>Atualização em tempo real</li>
+              <li>Regras por depósito e filial</li>
+              <li>Controle de disponibilidade</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Coluna 2 (ilustração) -->
+        <div class="rounded-2xl border border-white/10 bg-gradient-to-tr from-primary/10 to-secondary/10 p-6">
+          <div class="grid gap-4">
+            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
+              <p class="text-sm text-white/70">Pedidos importados (hoje)</p>
+              <p class="mt-1 text-3xl font-bold">512</p>
+              <p class="mt-1 text-xs text-emerald-400">98,2% processados</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
+              <p class="text-sm text-white/70">Erros pendentes</p>
+              <p class="mt-1 text-3xl font-bold">3</p>
+              <p class="mt-1 text-xs text-amber-300">Reprocesso automático habilitado</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
+              <p class="text-sm text-white/70">Canais conectados</p>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Meli</span>
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Shopee</span>
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Magalu</span>
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Amazon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Coluna 3 -->
+        <div class="space-y-6">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="font-semibold">Pedidos</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li>Importação automática e SLA configurável</li>
+              <li>NF, picking, faturamento e envio com rastreio</li>
+              <li>Painel de erros e validações</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="font-semibold">Regras & Mapeamentos</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li>Criação visual de regras</li>
+              <li>Transformações XSLT/JS</li>
+              <li>Mapeamento por cliente, canal e modelo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="border-y border-white/10 bg-white/5">
+      <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold sm:text-4xl">O que clientes dizem</h2>
+          <p class="mt-3 text-white/80">Histórias reais de quem opera com múltiplos canais.</p>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <figure class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+            <blockquote class="text-white/80">“Conectamos 4 marketplaces em menos de 1 semana. Estoque e pedidos sincronizados, sem dor de cabeça.”</blockquote>
+            <figcaption class="mt-4 text-sm text-white/60">— Ana P., Operações</figcaption>
+          </figure>
+          <figure class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+            <blockquote class="text-white/80">“Os mapeamentos visuais e os reprocessos automáticos salvaram nosso time de suporte.”</blockquote>
+            <figcaption class="mt-4 text-sm text-white/60">— Marcos L., TI</figcaption>
+          </figure>
+          <figure class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+            <blockquote class="text-white/80">“Finalmente um conector que respeita o modelo de dados do SAP B1 e escala por cliente.”</blockquote>
+            <figcaption class="mt-4 text-sm text-white/60">— Juliana R., Projetos</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preços -->
+    <section id="precos" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl">Planos simples e transparentes</h2>
+        <p class="mt-3 text-white/80">Escolha o plano ideal para o seu estágio.</p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <!-- Plano Start -->
+        <div class="relative rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="text-xl font-semibold">Start</h3>
+          <p class="mt-1 text-white/70">Para quem está começando</p>
+          <p class="mt-6 text-4xl font-extrabold">R$ 499<span class="text-base font-semibold text-white/60">/mês</span></p>
+          <ul class="mt-6 space-y-2 text-white/75">
+            <li>1 canal marketplace</li>
+            <li>Até 5k pedidos/mês</li>
+            <li>Mapeamentos básicos</li>
+            <li>Suporte em horário comercial</li>
+          </ul>
+          <a href="#demo" class="mt-8 inline-block w-full rounded-xl bg-white/90 px-4 py-2 text-center font-semibold text-[#0b1020] hover:bg-white">Começar</a>
+        </div>
+        <!-- Plano Pro (destaque) -->
+        <div class="relative rounded-2xl border border-secondary/40 bg-gradient-to-tr from-secondary/20 to-primary/20 p-6 shadow-soft ring-1 ring-secondary/30">
+          <div class="absolute -top-3 right-6 rounded-full bg-secondary px-2 py-1 text-xs font-semibold">Mais popular</div>
+          <h3 class="text-xl font-semibold">Pro</h3>
+          <p class="mt-1 text-white/80">Para operação multicanal</p>
+          <p class="mt-6 text-4xl font-extrabold">R$ 1.499<span class="text-base font-semibold text-white/70">/mês</span></p>
+          <ul class="mt-6 space-y-2 text-white/85">
+            <li>Até 5 canais</li>
+            <li>Até 30k pedidos/mês</li>
+            <li>Regras avançadas e transformações</li>
+            <li>Monitoramento e reprocessos</li>
+          </ul>
+          <a href="#demo" class="mt-8 inline-block w-full rounded-xl bg-gradient-to-tr from-primary to-secondary px-4 py-2 text-center font-semibold hover:opacity-95">Assinar Pro</a>
+        </div>
+        <!-- Plano Enterprise -->
+        <div class="relative rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="text-xl font-semibold">Enterprise</h3>
+          <p class="mt-1 text-white/70">Para alto volume</p>
+          <p class="mt-6 text-4xl font-extrabold">Sob consulta</p>
+          <ul class="mt-6 space-y-2 text-white/75">
+            <li>Canais ilimitados</li>
+            <li>Pedidos ilimitados</li>
+            <li>SLA dedicado</li>
+            <li>Suporte 24x7</li>
+          </ul>
+          <a href="#contato" class="mt-8 inline-block w-full rounded-xl border border-white/15 px-4 py-2 text-center font-semibold text-white/90 hover:bg-white/5">Falar com vendas</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="demo" class="border-y border-white/10 bg-white/5">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-8 md:grid-cols-2">
+          <div>
+            <h2 class="text-2xl font-bold sm:text-3xl">Pronto para integrar seus marketplaces ao SAP B1?</h2>
+            <p class="mt-2 text-white/80">Agende uma demonstração guiada e veja o SyncOne em ação no seu cenário.</p>
+          </div>
+          <form id="contato" class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label for="nome" class="mb-1 block text-sm text-white/70">Nome</label>
+                <input id="nome" name="nome" type="text" required class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none" placeholder="Seu nome" />
+              </div>
+              <div>
+                <label for="email" class="mb-1 block text-sm text-white/70">E-mail</label>
+                <input id="email" name="email" type="email" required class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none" placeholder="voce@empresa.com" />
+              </div>
+              <div class="md:col-span-2">
+                <label for="empresa" class="mb-1 block text-sm text-white/70">Empresa</label>
+                <input id="empresa" name="empresa" type="text" class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none" placeholder="Nome da empresa" />
+              </div>
+              <div class="md:col-span-2">
+                <label for="mensagem" class="mb-1 block text-sm text-white/70">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="3" class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none" placeholder="Conte brevemente seu cenário (canais, volume, ERP)"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="mt-4 w-full rounded-xl bg-gradient-to-tr from-primary to-secondary px-4 py-2 font-semibold hover:opacity-95">Solicitar demonstração</button>
+            <p class="mt-2 text-center text-xs text-white/50">Ao enviar, concorda com nossa política de privacidade.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="">
+      <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div class="grid gap-8 md:grid-cols-3">
+          <div>
+            <a href="#" class="flex items-center gap-2">
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-secondary font-extrabold">S</span>
+              <span class="text-lg font-semibold tracking-tight">SyncOne</span>
+            </a>
+            <p class="mt-3 max-w-sm text-sm text-white/70">Plataforma de integração entre marketplaces e SAP Business One. Confiável, flexível e escalável.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="mb-3 font-semibold">Produto</h4>
+              <ul class="space-y-2 text-white/70">
+                <li><a href="#beneficios" class="hover:text-white">Benefícios</a></li>
+                <li><a href="#features" class="hover:text-white">Recursos</a></li>
+                <li><a href="#precos" class="hover:text-white">Preços</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="mb-3 font-semibold">Empresa</h4>
+              <ul class="space-y-2 text-white/70">
+                <li><a href="#depoimentos" class="hover:text-white">Clientes</a></li>
+                <li><a href="#contato" class="hover:text-white">Contato</a></li>
+                <li><a href="#" class="hover:text-white">Política de privacidade</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-sm text-white/70">
+            <h4 class="mb-3 font-semibold">Fale com a gente</h4>
+            <p>comercial@syncone.com.br</p>
+            <p class="mt-2">Seg–Sex, 9h–18h</p>
+            <div class="mt-4 flex gap-3">
+              <a href="#" class="rounded-lg border border-white/15 px-3 py-1 hover:bg-white/5">LinkedIn</a>
+              <a href="#" class="rounded-lg border border-white/15 px-3 py-1 hover:bg-white/5">YouTube</a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-white/10 pt-6 text-sm text-white/50">© <span id="year"></span> SyncOne. Todos os direitos reservados.</div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      document.querySelector('#contato')?.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target).entries());
+        console.log('Lead enviado:', data);
+        alert('Obrigado! Em breve entraremos em contato para agendar a demonstração.');
+        e.target.reset();
+      });
+    </script>
+  </body>
+</html>
