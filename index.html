@@ -4,125 +4,169 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>SyncOne — Integração de Marketplaces com SAP Business One</title>
-    <meta name="description" content="Integre Mercado Livre, Shopee, Amazon, Magalu e outros marketplaces ao SAP Business One com rapidez, confiabilidade e escalabilidade." />
+    <title>SyncOne — Integração entre Marketplaces e SAP Business One</title>
+    <meta
+      name="description"
+      content="Integre marketplaces ao SAP Business One com mais controle sobre pedidos, estoque e preços. Plataforma focada em estabilidade operacional, automação e visibilidade da integração."
+    />
 
-    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // Custom Tailwind config (opcional)
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: '#015CFF',
-              secondary: '#6F2DFF'
+              primary: "#015CFF",
+              secondary: "#6F2DFF",
             },
             boxShadow: {
-              soft: '0 10px 30px rgba(2, 6, 23, 0.08)'
+              soft: "0 10px 30px rgba(2, 6, 23, 0.08)",
             },
             backgroundImage: {
-              'hero-glow': 'radial-gradient(60% 60% at 50% 10%, rgba(111,45,255,0.18) 0%, rgba(1,92,255,0.12) 30%, rgba(255,255,255,0) 70%)'
-            }
-          }
-        }
-      }
+              "hero-glow":
+                "radial-gradient(60% 60% at 50% 10%, rgba(111,45,255,0.18) 0%, rgba(1,92,255,0.12) 30%, rgba(255,255,255,0) 70%)",
+            },
+          },
+        },
+      };
     </script>
 
-    <!-- Fonte (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="iconpage.png">
     <style>
-      html { scroll-behavior: smooth; }
-      body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+          Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+      }
     </style>
   </head>
   <body class="bg-[#0b1020] text-white antialiased selection:bg-secondary/30 selection:text-white">
-    <!-- Top Gradient / Glow -->
     <div class="pointer-events-none fixed inset-0 -z-10 bg-hero-glow"></div>
 
-    <!-- Navbar -->
     <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <a href="#" class="flex items-center gap-2">
-            <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-secondary font-extrabold">S</span>
-            <span class="text-lg font-semibold tracking-tight">SyncOne</span>
+            <img src="icon.png" alt="SyncOne" width="150" />
           </a>
+
           <nav class="hidden items-center gap-8 text-sm/6 md:flex">
+            <a href="#problemas" class="text-white/80 hover:text-white">Problemas</a>
             <a href="#beneficios" class="text-white/80 hover:text-white">Benefícios</a>
             <a href="#como-funciona" class="text-white/80 hover:text-white">Como funciona</a>
             <a href="#features" class="text-white/80 hover:text-white">Recursos</a>
-            <a href="#precos" class="text-white/80 hover:text-white">Preços</a>
+            <a href="#faq" class="text-white/80 hover:text-white">FAQ</a>
             <a href="#contato" class="text-white/80 hover:text-white">Contato</a>
           </nav>
+
           <div class="flex items-center gap-3">
-            <a href="#contato" class="hidden rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/5 md:inline-block">Falar com especialista</a>
-            <a href="#demo" class="rounded-xl bg-gradient-to-tr from-primary to-secondary px-4 py-2 text-sm font-semibold shadow-soft hover:opacity-95">Quero uma demonstração</a>
+            <a
+              href="#contato"
+              class="hidden rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/5 md:inline-block"
+              >Falar sobre meu cenário</a
+            >
+            <a
+              href="#demo"
+              class="rounded-xl bg-gradient-to-tr from-primary to-secondary px-4 py-2 text-sm font-semibold shadow-soft hover:opacity-95"
+              >Solicitar demonstração</a
+            >
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Hero -->
     <section id="hero" class="relative overflow-hidden">
-      <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:py-28 lg:px-8">
+      <div
+        class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-28"
+      >
         <div>
-          <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Integração completa entre Marketplaces e <span class="bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent">SAP Business One</span>
-          </h1>
-          <p class="mt-5 max-w-xl text-base text-white/80 sm:text-lg">
-            Centralize pedidos, produtos, estoque e preços em um único painel inteligente.
-            Configure mapeamentos e regras de negócio sem precisar mexer em código.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#demo" class="rounded-xl bg-gradient-to-tr from-primary to-secondary px-6 py-3 text-sm font-semibold shadow-soft hover:opacity-95">Ver demonstração</a>
-            <a href="#como-funciona" class="rounded-xl border border-white/15 px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5">Como funciona</a>
+          <div
+            class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70"
+          >
+            Integração entre marketplaces e SAP Business One
           </div>
-          <p class="mt-5 text-xs text-white/50">Compatível com Mercado Livre, Shopee, Amazon, Magalu e outros.</p>
+
+          <h1 class="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Mais controle sobre <span class="bg-gradient-to-tr from-primary to-secondary bg-clip-text text-transparent">pedidos, estoque e preços</span> entre marketplaces e SAP Business One
+          </h1>
+
+          <p class="mt-5 max-w-xl text-base text-white/80 sm:text-lg">
+            Reduza falhas de sincronização entre ERP e marketplaces com uma plataforma focada em estabilidade operacional, automação e visibilidade da integração.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#demo"
+              class="rounded-xl bg-gradient-to-tr from-primary to-secondary px-6 py-3 text-sm font-semibold shadow-soft hover:opacity-95"
+              >Solicitar demonstração</a
+            >
+            <a
+              href="#como-funciona"
+              class="rounded-xl border border-white/15 px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
+              >Como funciona</a
+            >
+          </div>
+
+          <ul class="mt-6 space-y-2 text-sm text-white/65">
+            <li>• Pedidos, estoque e preços sincronizados com mais previsibilidade</li>
+            <li>• Regras e mapeamentos centralizados</li>
+            <li>• Painel para acompanhar falhas e reprocessamentos</li>
+          </ul>
+
+          <p class="mt-5 text-xs text-white/50">
+            Compatível com operações que vendem em Mercado Livre, Shopee, Amazon, Magalu e outros canais.
+          </p>
         </div>
+
         <div class="relative">
-          <!-- Mockup / Illustration -->
           <div class="absolute -left-20 -top-10 -z-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl sm:-left-10"></div>
+
           <div class="rounded-2xl border border-white/10 bg-white/5 p-2 shadow-soft">
             <div class="rounded-xl bg-[#0f1428] p-4">
-              <div class="mb-3 flex items-center gap-2">
+              <div class="mb-4 flex items-center gap-2">
                 <span class="h-3 w-3 rounded-full bg-[#ff5f56]"></span>
                 <span class="h-3 w-3 rounded-full bg-[#ffbd2e]"></span>
                 <span class="h-3 w-3 rounded-full bg-[#27c93f]"></span>
               </div>
-              <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-                <!-- Stat card -->
+
+              <div class="grid gap-4 sm:grid-cols-2">
                 <div class="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p class="text-xs text-white/70">Pedidos (24h)</p>
-                  <p class="mt-2 text-2xl font-bold">1.482</p>
-                  <span class="mt-1 inline-block text-xs text-emerald-400">+8,4%</span>
+                  <p class="text-xs text-white/60">Fluxo monitorado</p>
+                  <p class="mt-2 text-lg font-semibold">Pedidos, estoque e preços</p>
+                  <p class="mt-2 text-sm text-white/65">
+                    Acompanhe eventos da integração e identifique falhas com mais rapidez.
+                  </p>
                 </div>
+
                 <div class="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p class="text-xs text-white/70">SKUs sincronizados</p>
-                  <p class="mt-2 text-2xl font-bold">32.140</p>
-                  <span class="mt-1 inline-block text-xs text-emerald-400">Tempo real</span>
+                  <p class="text-xs text-white/60">Tratamento operacional</p>
+                  <p class="mt-2 text-lg font-semibold">Logs e reprocessamento</p>
+                  <p class="mt-2 text-sm text-white/65">
+                    Tenha visibilidade sobre erros e reenvie integrações sem depender de processos manuais.
+                  </p>
                 </div>
-                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p class="text-xs text-white/70">Canais ativos</p>
-                  <p class="mt-2 text-2xl font-bold">8</p>
-                  <span class="mt-1 inline-block text-xs text-blue-300">Meli, Shopee…</span>
-                </div>
-                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p class="text-xs text-white/70">Erros tratados</p>
-                  <p class="mt-2 text-2xl font-bold">99,4%</p>
-                  <span class="mt-1 inline-block text-xs text-emerald-400">Com reprocesso</span>
-                </div>
-                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p class="text-xs text-white/70">SLAs atendidos</p>
-                  <p class="mt-2 text-2xl font-bold">97%</p>
-                  <span class="mt-1 inline-block text-xs text-emerald-400">Garantidos</span>
-                </div>
-                <div class="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p class="text-xs text-white/70">Latência média</p>
-                  <p class="mt-2 text-2xl font-bold">< 2s</p>
-                  <span class="mt-1 inline-block text-xs text-blue-300">Filas & logs</span>
+
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4 sm:col-span-2">
+                  <p class="text-xs text-white/60">Fluxo da operação</p>
+                  <div class="mt-3 flex flex-wrap items-center gap-2 text-sm text-white/75">
+                    <span class="rounded-lg bg-white/10 px-3 py-2">Marketplaces</span>
+                    <span class="text-white/40">→</span>
+                    <span class="rounded-lg bg-white/10 px-3 py-2">SyncOne</span>
+                    <span class="text-white/40">→</span>
+                    <span class="rounded-lg bg-white/10 px-3 py-2">SAP Business One</span>
+                  </div>
+                  <p class="mt-3 text-sm text-white/65">
+                    Uma camada central para conectar canais, aplicar regras e acompanhar a integração com mais controle.
+                  </p>
                 </div>
               </div>
             </div>
@@ -131,297 +175,453 @@
       </div>
     </section>
 
-    <!-- Social proof / Logos (placeholders) -->
-    <section aria-label="Empresas atendidas" class="border-y border-white/10 bg-white/5">
-      <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-8 px-4 py-8 sm:px-6 lg:px-8">
-        <span class="text-white/60">Confiado por times que vendem em múltiplos canais</span>
-        <div class="flex flex-wrap items-center gap-8 opacity-70">
-          <div class="h-6 w-24 rounded bg-white/10"></div>
-          <div class="h-6 w-24 rounded bg-white/10"></div>
-          <div class="h-6 w-24 rounded bg-white/10"></div>
-          <div class="h-6 w-24 rounded bg-white/10"></div>
+    <section id="problemas" class="border-y border-white/10 bg-white/5">
+      <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold sm:text-4xl">Sua operação sofre com isso?</h2>
+          <p class="mt-3 text-white/80">
+            Empresas que vendem em marketplaces e usam SAP Business One geralmente enfrentam os mesmos gargalos operacionais.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">📦</div>
+            <h3 class="text-lg font-semibold">Estoque desatualizado entre canais</h3>
+            <p class="mt-2 text-white/70">
+              Divergências entre ERP e marketplaces aumentam o risco de ruptura, cancelamentos e retrabalho.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">💰</div>
+            <h3 class="text-lg font-semibold">Preço diferente do esperado</h3>
+            <p class="mt-2 text-white/70">
+              Alterações no ERP nem sempre chegam ao canal com a velocidade ou consistência necessárias.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🧾</div>
+            <h3 class="text-lg font-semibold">Pedidos demorando para entrar no ERP</h3>
+            <p class="mt-2 text-white/70">
+              Atrasos de integração afetam faturamento, separação e a previsibilidade da operação.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🔍</div>
+            <h3 class="text-lg font-semibold">Pouca visibilidade sobre falhas</h3>
+            <p class="mt-2 text-white/70">
+              Sem logs claros e histórico da integração, o suporte vira investigação manual.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">⚙️</div>
+            <h3 class="text-lg font-semibold">Regras difíceis de manter</h3>
+            <p class="mt-2 text-white/70">
+              Mapas e validações espalhados aumentam complexidade e dificultam evolução da operação.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
+            <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🧠</div>
+            <h3 class="text-lg font-semibold">Dependência de processos manuais</h3>
+            <p class="mt-2 text-white/70">
+              Planilhas, ajustes manuais e conferências paralelas consomem tempo e aumentam o risco operacional.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Benefícios -->
     <section id="beneficios" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-bold sm:text-4xl">Benefícios que geram resultado</h2>
-        <p class="mt-3 text-white/80">Integração profunda ao SAP B1, escalabilidade por canal e configuração sem código.</p>
+        <h2 class="text-3xl font-bold sm:text-4xl">Onde o SyncOne ajuda</h2>
+        <p class="mt-3 text-white/80">
+          Uma plataforma pensada para trazer mais previsibilidade, controle e visibilidade à integração entre SAP B1 e marketplaces.
+        </p>
       </div>
+
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Card -->
         <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
           <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🔗</div>
-          <h3 class="text-lg font-semibold">Integração nativa com SAP Business One</h3>
-          <p class="mt-2 text-white/70">Adapters padronizados, logs completos e compatibilidade com múltiplas filiais e depósitos.</p>
+          <h3 class="text-lg font-semibold">Conexão focada em SAP Business One</h3>
+          <p class="mt-2 text-white/70">
+            Integração orientada à realidade operacional de empresas que usam SAP B1 como sistema principal.
+          </p>
         </article>
+
         <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">⚙️</div>
-          <h3 class="text-lg font-semibold">Configuração sem código</h3>
-          <p class="mt-2 text-white/70">Mapeie campos, crie validações e transforme dados por canal sem precisar alterar código.</p>
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">⚡</div>
+          <h3 class="text-lg font-semibold">Sincronização rápida e automatizada</h3>
+          <p class="mt-2 text-white/70">
+            Atualize pedidos, estoque e preços com mais velocidade para reduzir inconsistências entre canais.
+          </p>
         </article>
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">⏱️</div>
-          <h3 class="text-lg font-semibold">Sincronização em tempo real</h3>
-          <p class="mt-2 text-white/70">Estoque, preços e status de pedidos sempre atualizados para evitar rupturas e divergências.</p>
-        </article>
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">📦</div>
-          <h3 class="text-lg font-semibold">Gestão de pedidos ponta a ponta</h3>
-          <p class="mt-2 text-white/70">Importação, faturamento, NF, picking e envio com rastreio — tudo automatizado.</p>
-        </article>
-        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🚀</div>
-          <h3 class="text-lg font-semibold">Escalável por canal e cliente</h3>
-          <p class="mt-2 text-white/70">Adicione novos marketplaces e clientes sem reescrever integrações.</p>
-        </article>
+
         <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
           <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🛡️</div>
-          <h3 class="text-lg font-semibold">Resiliência com filas e reprocessos</h3>
-          <p class="mt-2 text-white/70">Tolerância a falhas, reprocessamento automático e observabilidade de ponta.</p>
+          <h3 class="text-lg font-semibold">Mais controle sobre falhas</h3>
+          <p class="mt-2 text-white/70">
+            Centralize logs, acompanhe ocorrências e ganhe mais clareza sobre o que aconteceu na integração.
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">⚙️</div>
+          <h3 class="text-lg font-semibold">Regras e mapeamentos centralizados</h3>
+          <p class="mt-2 text-white/70">
+            Organize transformações e validações em um único lugar, com menos dependência de ajustes dispersos.
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">📊</div>
+          <h3 class="text-lg font-semibold">Visibilidade operacional</h3>
+          <p class="mt-2 text-white/70">
+            Entenda melhor o fluxo entre canais e ERP para agir mais rápido quando houver desvios.
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">🚀</div>
+          <h3 class="text-lg font-semibold">Base preparada para evoluir</h3>
+          <p class="mt-2 text-white/70">
+            Estruture sua operação para crescer com mais organização na integração entre canais e ERP.
+          </p>
         </article>
       </div>
     </section>
 
-    <!-- Como funciona -->
     <section id="como-funciona" class="border-y border-white/10 bg-white/5">
       <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
           <h2 class="text-3xl font-bold sm:text-4xl">Como funciona</h2>
-          <p class="mt-3 text-white/80">Três passos simples para começar a rodar integrado.</p>
+          <p class="mt-3 text-white/80">Uma camada central entre os canais de venda e o SAP Business One.</p>
         </div>
+
         <div class="mt-12 grid gap-6 md:grid-cols-3">
           <div class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
             <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/20">1️⃣</div>
-            <h3 class="text-lg font-semibold">Conecte seus marketplaces</h3>
-            <p class="mt-2 text-white/70">Mercado Livre, Shopee, Amazon, Magalu e outros via conexão segura.</p>
+            <h3 class="text-lg font-semibold">Conecte os canais da operação</h3>
+            <p class="mt-2 text-white/70">
+              Integre marketplaces à sua operação em uma camada centralizada.
+            </p>
           </div>
+
           <div class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
             <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/20">2️⃣</div>
-            <h3 class="text-lg font-semibold">Configure mapeamentos e regras</h3>
-            <p class="mt-2 text-white/70">Campos, transformações e validações por canal e por cliente.</p>
+            <h3 class="text-lg font-semibold">Defina regras e mapeamentos</h3>
+            <p class="mt-2 text-white/70">
+              Organize validações, transformações e comportamentos da integração em um único lugar.
+            </p>
           </div>
+
           <div class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
             <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/20">3️⃣</div>
-            <h3 class="text-lg font-semibold">Sincronize com o SAP B1</h3>
-            <p class="mt-2 text-white/70">Pedidos, estoque, produtos e preços fluem automaticamente.</p>
+            <h3 class="text-lg font-semibold">Acompanhe a operação integrada</h3>
+            <p class="mt-2 text-white/70">
+              Sincronize dados com o SAP B1 e tenha mais visibilidade sobre eventos, falhas e reprocessamentos.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features detalhadas -->
     <section id="features" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-bold sm:text-4xl">Recursos da plataforma</h2>
-        <p class="mt-3 text-white/80">Tudo o que você precisa para operar sem atrito entre canais e ERP.</p>
+        <h2 class="text-3xl font-bold sm:text-4xl">Recursos centrais da plataforma</h2>
+        <p class="mt-3 text-white/80">
+          O SyncOne foca nos pontos mais críticos da integração entre marketplaces e ERP.
+        </p>
       </div>
 
       <div class="mt-12 grid gap-6 lg:grid-cols-3">
-        <!-- Coluna 1 -->
-        <div class="space-y-6">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h3 class="font-semibold">Produtos</h3>
-            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
-              <li>Importação e exportação automática</li>
-              <li>Mapeamento por canal</li>
-              <li>Sincronização de preços e imagens</li>
-            </ul>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h3 class="font-semibold">Estoques</h3>
-            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
-              <li>Atualização em tempo real</li>
-              <li>Regras por depósito e filial</li>
-              <li>Controle de disponibilidade</li>
-            </ul>
-          </div>
-        </div>
-        <!-- Coluna 2 (ilustração) -->
-        <div class="rounded-2xl border border-white/10 bg-gradient-to-tr from-primary/10 to-secondary/10 p-6">
-          <div class="grid gap-4">
-            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
-              <p class="text-sm text-white/70">Pedidos importados (hoje)</p>
-              <p class="mt-1 text-3xl font-bold">512</p>
-              <p class="mt-1 text-xs text-emerald-400">98,2% processados</p>
-            </div>
-            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
-              <p class="text-sm text-white/70">Erros pendentes</p>
-              <p class="mt-1 text-3xl font-bold">3</p>
-              <p class="mt-1 text-xs text-amber-300">Reprocesso automático habilitado</p>
-            </div>
-            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
-              <p class="text-sm text-white/70">Canais conectados</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Meli</span>
-                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Shopee</span>
-                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Magalu</span>
-                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Amazon</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coluna 3 -->
         <div class="space-y-6">
           <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
             <h3 class="font-semibold">Pedidos</h3>
             <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
-              <li>Importação automática e SLA configurável</li>
-              <li>NF, picking, faturamento e envio com rastreio</li>
-              <li>Painel de erros e validações</li>
+              <li>Entrada automatizada dos pedidos no fluxo da operação</li>
+              <li>Tratamento de ocorrências e validações operacionais</li>
+              <li>Mais previsibilidade na comunicação com o ERP</li>
             </ul>
           </div>
+
           <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h3 class="font-semibold">Regras & Mapeamentos</h3>
+            <h3 class="font-semibold">Estoque e preços</h3>
             <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
-              <li>Criação visual de regras</li>
-              <li>Transformações XSLT/JS</li>
-              <li>Mapeamento por cliente, canal e modelo</li>
+              <li>Sincronização automatizada entre ERP e canais</li>
+              <li>Atualizações orientadas à operação do SAP B1</li>
+              <li>Redução de inconsistências entre sistemas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-gradient-to-tr from-primary/10 to-secondary/10 p-6">
+          <div class="grid gap-4">
+            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
+              <p class="text-sm text-white/70">Modelo operacional</p>
+              <p class="mt-1 text-2xl font-bold">Mais visibilidade da integração</p>
+              <p class="mt-2 text-sm text-white/70">
+                Uma plataforma para concentrar regras, acompanhar eventos e reduzir dependência de processos paralelos.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
+              <p class="text-sm text-white/70">Foco do produto</p>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Pedidos</span>
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Estoque</span>
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Preços</span>
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Mapeamentos</span>
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Logs</span>
+                <span class="rounded-md bg-white/10 px-2 py-1 text-xs">Reprocessos</span>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-white/10 bg-[#0f1428] p-4">
+              <p class="text-sm text-white/70">Abordagem</p>
+              <p class="mt-1 text-sm text-white/70">
+                Pensado para operações que precisam de integração mais organizada entre marketplaces e SAP Business One.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="font-semibold">Catálogo e estrutura de produtos</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li>Base para evolução de produtos, variações e estruturas de publicação</li>
+              <li>Organização dos dados enviados aos canais</li>
+              <li>Mais controle sobre regras por marketplace</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h3 class="font-semibold">Monitoramento e suporte operacional</h3>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li>Logs centralizados</li>
+              <li>Rastreamento do fluxo da integração</li>
+              <li>Base para tratamento e reprocessamento de falhas</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Depoimentos -->
-    <section id="depoimentos" class="border-y border-white/10 bg-white/5">
-      <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-3xl text-center">
-          <h2 class="text-3xl font-bold sm:text-4xl">O que clientes dizem</h2>
-          <p class="mt-3 text-white/80">Histórias reais de quem opera com múltiplos canais.</p>
-        </div>
-        <div class="mt-12 grid gap-6 md:grid-cols-3">
-          <figure class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-            <blockquote class="text-white/80">“Conectamos 4 marketplaces em menos de 1 semana. Estoque e pedidos sincronizados, sem dor de cabeça.”</blockquote>
-            <figcaption class="mt-4 text-sm text-white/60">— Ana P., Operações</figcaption>
-          </figure>
-          <figure class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-            <blockquote class="text-white/80">“Os mapeamentos visuais e os reprocessos automáticos salvaram nosso time de suporte.”</blockquote>
-            <figcaption class="mt-4 text-sm text-white/60">— Marcos L., TI</figcaption>
-          </figure>
-          <figure class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
-            <blockquote class="text-white/80">“Finalmente um conector que respeita o modelo de dados do SAP B1 e escala por cliente.”</blockquote>
-            <figcaption class="mt-4 text-sm text-white/60">— Juliana R., Projetos</figcaption>
-          </figure>
+    <section id="validacao" class="border-y border-white/10 bg-white/5">
+      <div class="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold sm:text-4xl">Construindo com foco em operações reais</h2>
+        <p class="mx-auto mt-4 max-w-3xl text-white/80">
+          O SyncOne está sendo desenvolvido para empresas e parceiros que precisam integrar marketplaces ao SAP Business One com mais controle operacional, menos retrabalho e melhor visibilidade sobre a integração.
+        </p>
+        <p class="mx-auto mt-4 max-w-2xl text-sm text-white/60">
+          Se você quer avaliar aderência ao seu cenário, podemos conversar sobre canais, volume, regras de negócio e necessidades da operação.
+        </p>
+        <div class="mt-8">
+          <a
+            href="#demo"
+            class="inline-flex rounded-xl bg-gradient-to-tr from-primary to-secondary px-6 py-3 text-sm font-semibold shadow-soft hover:opacity-95"
+            >Quero avaliar meu cenário</a
+          >
         </div>
       </div>
     </section>
 
-    <!-- Preços -->
-    <section id="precos" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <section id="faq" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-bold sm:text-4xl">Planos simples e transparentes</h2>
-        <p class="mt-3 text-white/80">Escolha o plano ideal para o seu estágio.</p>
+        <h2 class="text-3xl font-bold sm:text-4xl">Perguntas frequentes</h2>
+        <p class="mt-3 text-white/80">Dúvidas comuns sobre o posicionamento da plataforma.</p>
       </div>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        <!-- Plano Start -->
-        <div class="relative rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 class="text-xl font-semibold">Start</h3>
-          <p class="mt-1 text-white/70">Para quem está começando</p>
-          <p class="mt-6 text-4xl font-extrabold">R$ 499<span class="text-base font-semibold text-white/60">/mês</span></p>
-          <ul class="mt-6 space-y-2 text-white/75">
-            <li>1 canal marketplace</li>
-            <li>Até 5k pedidos/mês</li>
-            <li>Mapeamentos básicos</li>
-            <li>Suporte em horário comercial</li>
-          </ul>
-          <a href="#demo" class="mt-8 inline-block w-full rounded-xl bg-white/90 px-4 py-2 text-center font-semibold text-[#0b1020] hover:bg-white">Começar</a>
-        </div>
-        <!-- Plano Pro (destaque) -->
-        <div class="relative rounded-2xl border border-secondary/40 bg-gradient-to-tr from-secondary/20 to-primary/20 p-6 shadow-soft ring-1 ring-secondary/30">
-          <div class="absolute -top-3 right-6 rounded-full bg-secondary px-2 py-1 text-xs font-semibold">Mais popular</div>
-          <h3 class="text-xl font-semibold">Pro</h3>
-          <p class="mt-1 text-white/80">Para operação multicanal</p>
-          <p class="mt-6 text-4xl font-extrabold">R$ 1.499<span class="text-base font-semibold text-white/70">/mês</span></p>
-          <ul class="mt-6 space-y-2 text-white/85">
-            <li>Até 5 canais</li>
-            <li>Até 30k pedidos/mês</li>
-            <li>Regras avançadas e transformações</li>
-            <li>Monitoramento e reprocessos</li>
-          </ul>
-          <a href="#demo" class="mt-8 inline-block w-full rounded-xl bg-gradient-to-tr from-primary to-secondary px-4 py-2 text-center font-semibold hover:opacity-95">Assinar Pro</a>
-        </div>
-        <!-- Plano Enterprise -->
-        <div class="relative rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 class="text-xl font-semibold">Enterprise</h3>
-          <p class="mt-1 text-white/70">Para alto volume</p>
-          <p class="mt-6 text-4xl font-extrabold">Sob consulta</p>
-          <ul class="mt-6 space-y-2 text-white/75">
-            <li>Canais ilimitados</li>
-            <li>Pedidos ilimitados</li>
-            <li>SLA dedicado</li>
-            <li>Suporte 24x7</li>
-          </ul>
-          <a href="#contato" class="mt-8 inline-block w-full rounded-xl border border-white/15 px-4 py-2 text-center font-semibold text-white/90 hover:bg-white/5">Falar com vendas</a>
-        </div>
+
+      <div class="mx-auto mt-12 max-w-4xl space-y-4">
+        <details class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <summary class="cursor-pointer list-none font-semibold">
+            O SyncOne substitui um hub de marketplace?
+          </summary>
+          <p class="mt-3 text-white/70">
+            O SyncOne está sendo desenvolvido para centralizar a operação entre marketplaces e SAP Business One, com foco em controle, automação e visibilidade da integração. A aderência depende do cenário e das necessidades da operação.          
+          </p>
+        </details>
+
+        <details class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <summary class="cursor-pointer list-none font-semibold">
+            O estoque continua sendo controlado pelo ERP?
+          </summary>
+          <p class="mt-3 text-white/70">
+            Sim. A proposta é respeitar o SAP Business One como sistema central da operação e sincronizar os canais com mais previsibilidade.
+          </p>
+        </details>
+
+        <details class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <summary class="cursor-pointer list-none font-semibold">
+            É possível aplicar regras e mapeamentos específicos?
+          </summary>
+          <p class="mt-3 text-white/70">
+            Sim. A plataforma foi pensada para centralizar regras, transformações e mapeamentos conforme a necessidade da operação.
+          </p>
+        </details>
+
+        <details class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <summary class="cursor-pointer list-none font-semibold">
+            Quais canais podem ser integrados?
+          </summary>
+          <p class="mt-3 text-white/70">
+            A aderência depende do cenário e da estratégia do produto. O ideal é avaliar sua operação e os canais desejados em uma conversa inicial.
+          </p>
+        </details>
+
+        <details class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <summary class="cursor-pointer list-none font-semibold">
+            Como funciona a implantação?
+          </summary>
+          <p class="mt-3 text-white/70">
+            A implantação depende do contexto da operação, canais, regras de negócio e necessidades de integração com o SAP Business One. A demonstração inicial ajuda a entender o encaixe.
+          </p>
+        </details>
       </div>
     </section>
 
-    <!-- CTA Final -->
     <section id="demo" class="border-y border-white/10 bg-white/5">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="grid items-center gap-8 md:grid-cols-2">
           <div>
-            <h2 class="text-2xl font-bold sm:text-3xl">Pronto para integrar seus marketplaces ao SAP B1?</h2>
-            <p class="mt-2 text-white/80">Agende uma demonstração guiada e veja o SyncOne em ação no seu cenário.</p>
+            <h2 class="text-2xl font-bold sm:text-3xl">
+              Quer entender se o SyncOne faz sentido para sua operação?
+            </h2>
+            <p class="mt-2 text-white/80">
+              Agende uma conversa e avalie como integrar marketplaces ao SAP Business One com mais controle sobre pedidos, estoque e preços.
+            </p>
+
+            <ul class="mt-6 space-y-2 text-sm text-white/65">
+              <li>• Conversa orientada ao seu cenário</li>
+              <li>• Avaliação de canais, ERP e fluxo operacional</li>
+              <li>• Entendimento inicial das regras de negócio</li>
+            </ul>
           </div>
+
           <form id="contato" class="rounded-2xl border border-white/10 bg-[#0f1428] p-6">
             <div class="grid gap-4 md:grid-cols-2">
               <div>
                 <label for="nome" class="mb-1 block text-sm text-white/70">Nome</label>
-                <input id="nome" name="nome" type="text" required class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none" placeholder="Seu nome" />
+                <input
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  required
+                  class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none"
+                  placeholder="Seu nome"
+                />
               </div>
+
               <div>
                 <label for="email" class="mb-1 block text-sm text-white/70">E-mail</label>
-                <input id="email" name="email" type="email" required class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none" placeholder="voce@empresa.com" />
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none"
+                  placeholder="voce@empresa.com"
+                />
               </div>
-              <div class="md:col-span-2">
+
+              <div>
                 <label for="empresa" class="mb-1 block text-sm text-white/70">Empresa</label>
-                <input id="empresa" name="empresa" type="text" class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none" placeholder="Nome da empresa" />
+                <input
+                  id="empresa"
+                  name="empresa"
+                  type="text"
+                  class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none"
+                  placeholder="Nome da empresa"
+                />
               </div>
+
+              <div>
+                <label for="erp" class="mb-1 block text-sm text-white/70">ERP</label>
+                <input
+                  id="erp"
+                  name="erp"
+                  type="text"
+                  class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none"
+                  placeholder="Ex.: SAP Business One"
+                />
+              </div>
+
+              <div class="md:col-span-2">
+                <label for="canais" class="mb-1 block text-sm text-white/70">Canais que deseja integrar</label>
+                <input
+                  id="canais"
+                  name="canais"
+                  type="text"
+                  class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none"
+                  placeholder="Ex.: Mercado Livre, Shopee, Amazon"
+                />
+              </div>
+
               <div class="md:col-span-2">
                 <label for="mensagem" class="mb-1 block text-sm text-white/70">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" rows="3" class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none" placeholder="Conte brevemente seu cenário (canais, volume, ERP)"></textarea>
+                <textarea
+                  id="mensagem"
+                  name="mensagem"
+                  rows="4"
+                  class="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-white/40 focus:border-primary focus:outline-none"
+                  placeholder="Conte brevemente seu cenário, volume aproximado e principais desafios da integração"
+                ></textarea>
               </div>
             </div>
-            <button type="submit" class="mt-4 w-full rounded-xl bg-gradient-to-tr from-primary to-secondary px-4 py-2 font-semibold hover:opacity-95">Solicitar demonstração</button>
-            <p class="mt-2 text-center text-xs text-white/50">Ao enviar, concorda com nossa política de privacidade.</p>
+
+            <button
+              type="submit"
+              class="mt-4 w-full rounded-xl bg-gradient-to-tr from-primary to-secondary px-4 py-2 font-semibold hover:opacity-95"
+            >
+              Solicitar demonstração
+            </button>
+
+            <p class="mt-2 text-center text-xs text-white/50">
+              Ao enviar, você concorda com nossa política de privacidade.
+            </p>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="">
+    <footer>
       <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div class="grid gap-8 md:grid-cols-3">
           <div>
             <a href="#" class="flex items-center gap-2">
-              <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-secondary font-extrabold">S</span>
-              <span class="text-lg font-semibold tracking-tight">SyncOne</span>
+              <img src="icon.png" alt="SyncOne" width="150" />
             </a>
-            <p class="mt-3 max-w-sm text-sm text-white/70">Plataforma de integração entre marketplaces e SAP Business One. Confiável, flexível e escalável.</p>
+            <p class="mt-3 max-w-sm text-sm text-white/70">
+              Plataforma de integração entre marketplaces e SAP Business One com foco em controle operacional, automação e visibilidade da integração.
+            </p>
           </div>
+
           <div class="grid grid-cols-2 gap-6 text-sm">
             <div>
               <h4 class="mb-3 font-semibold">Produto</h4>
               <ul class="space-y-2 text-white/70">
+                <li><a href="#problemas" class="hover:text-white">Problemas</a></li>
                 <li><a href="#beneficios" class="hover:text-white">Benefícios</a></li>
                 <li><a href="#features" class="hover:text-white">Recursos</a></li>
-                <li><a href="#precos" class="hover:text-white">Preços</a></li>
+                <li><a href="#faq" class="hover:text-white">FAQ</a></li>
               </ul>
             </div>
+
             <div>
               <h4 class="mb-3 font-semibold">Empresa</h4>
               <ul class="space-y-2 text-white/70">
-                <li><a href="#depoimentos" class="hover:text-white">Clientes</a></li>
+                <li><a href="#demo" class="hover:text-white">Demonstração</a></li>
                 <li><a href="#contato" class="hover:text-white">Contato</a></li>
                 <li><a href="#" class="hover:text-white">Política de privacidade</a></li>
               </ul>
             </div>
           </div>
+
           <div class="text-sm text-white/70">
             <h4 class="mb-3 font-semibold">Fale com a gente</h4>
             <p>comercial@syncone.com.br</p>
@@ -432,18 +632,21 @@
             </div>
           </div>
         </div>
-        <div class="mt-8 border-t border-white/10 pt-6 text-sm text-white/50">© <span id="year"></span> SyncOne. Todos os direitos reservados.</div>
+
+        <div class="mt-8 border-t border-white/10 pt-6 text-sm text-white/50">
+          © <span id="year"></span> SyncOne. Todos os direitos reservados.
+        </div>
       </div>
     </footer>
 
     <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-      document.querySelector('#contato')?.addEventListener('submit', function (e) {
+      document.querySelector("#contato")?.addEventListener("submit", function (e) {
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.target).entries());
-        console.log('Lead enviado:', data);
-        alert('Obrigado! Em breve entraremos em contato para agendar a demonstração.');
+        console.log("Lead enviado:", data);
+        alert("Obrigado! Em breve entraremos em contato para entender seu cenário.");
         e.target.reset();
       });
     </script>
